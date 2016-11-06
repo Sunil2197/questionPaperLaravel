@@ -1,7 +1,7 @@
 <div ng-controller="IndexController">
     <question-code></question-code>
 
-<div class="container">
+<div class="container question-add-container">
     <div class="col-lg-6 col-lg-offset-2">
         <form>
             <div class="form-group">
@@ -9,30 +9,30 @@
             </div>
             <div>
                 <label class="radio">
-                    <input type="radio" ng-model="result" name="answer" value="a">
+                    <input type="radio" ng-model="result" name="answer" value="{{optionA}}">
                     <input type="text" ng-model="optionA"  placeholder="Option 1" class="form-control">
                 </label>
             </div>
             <div>
                 <label class="radio">
-                    <input type="radio"  ng-model="result"  name="answer" value="b">
+                    <input type="radio"  ng-model="result"  name="answer" value="{{optionB}}">
                     <input type="text" ng-model="optionB"  placeholder="Option 2" class="form-control">
                 </label>
             </div>
             <div>
                 <label class="radio">
-                    <input type="radio" ng-model="result" name="answer" value="c">
+                    <input type="radio" ng-model="result" name="answer" value="{{optionC}}">
                     <input type="text" ng-model="optionC"  placeholder="Option 3"  class="form-control">
                 </label>
             </div>
             <div>
                 <label class="radio">
-                    <input type="radio"  ng-model="result"  name="answer" value="d">
+                    <input type="radio"  ng-model="result"  name="answer" value="{{optionD}}">
                     <input type="text" ng-model="optionD"  placeholder="Option 4" class="form-control">
                 </label>
             </div>
             <div class="right">
-                <button class="btn btn-success" add-question>Add More</button>
+                <button class="btn btn-success" ng-click="saveAndAddQuestionCode()">Save & Add More</button>
                 <button class="btn btn-success" ng-click="addQuestionCode()">Save</button>
             </div>
         </form>

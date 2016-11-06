@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\PaperCode;
 use App\QuestionPaper;
 
+
 class IndexController extends Controller
 {
    function storeQuestionPaperCode(Request $request){
@@ -17,13 +18,10 @@ class IndexController extends Controller
        $paperCode->code = $request->code;
        $paperCode->save();
 
-      return response()->json(['paperCode'=>$request->code,'questionPaper'=> $request->questionPaper]);
+      return response()->json(['paperCode'=>$request->code,'questionPaper'=> $request->questionPaper,'paperCode_id'=>$paperCode->id]);
     }
 
     function storeQuestionCode(Request $request){
-
-        dd($request->toArray());
-
         $question = new QuestionPaper();
         $question->question = $request->question;
         $question->a = $request->a;
@@ -33,8 +31,19 @@ class IndexController extends Controller
         $question->result = $request->result;
         $question->papercode_id = $request->paperCode;
         $question->save();
+        return response()->json(['success'=>'success'],200);
+    }
+
+    function getPaper($paperCode){
+/*        $papercode = new PaperCode();
+        $papercode->where('id',1)->with(['getPaper'=>function($query) {
+            $query->where(['id'=>2]);
+        }])->get()->toArray();*/
 
 
+        $papercode = new PaperCode();
+         $result= $papercode->where('code',$paperCode)->with('getPaper')->get()->toArray();
+        return response()->json(['paper'=>$result],200);
 
     }
 }

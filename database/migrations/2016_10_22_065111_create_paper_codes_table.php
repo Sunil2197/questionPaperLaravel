@@ -13,7 +13,7 @@ class CreatePaperCodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('papercodes', function (Blueprint $table) {
+        Schema::create('paper_codes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('code');

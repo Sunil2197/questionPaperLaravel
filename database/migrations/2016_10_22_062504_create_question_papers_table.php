@@ -13,13 +13,14 @@ class CreateQuestionPapersTable extends Migration
      */
     public function up()
     {
-        Schema::create('questionpapers', function (Blueprint $table) {
+        Schema::create('question_papers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('question');
-            $table->tinyInteger("a");
-            $table->tinyInteger("b");
-            $table->tinyInteger("c");
-            $table->tinyInteger("d");
+            $table->string("a");
+            $table->string("b");
+            $table->string("c");
+            $table->string("d");
+            $table->string("result");
             $table->integer("papercode_id");
             $table->timestamps();
         });

@@ -14,13 +14,13 @@ app.controller("IndexController",function ($scope,apiService) {
         apiService.post('/api/storePaperCode',data).then(function (sucess) {
             $scope.code = sucess.data.paperCode;
             $scope.questionpaer=sucess.data.questionPaper;
+            $scope.id =sucess.data.paperCode_id
             $scope.isFormnView=true;
         });
 
     }
 
     $scope.addQuestionCode = function () {
-        console.log('Button click');
 
         var data={
             question:$scope.question,
@@ -29,10 +29,32 @@ app.controller("IndexController",function ($scope,apiService) {
             c:$scope.optionC,
             d:$scope.optionD,
             result:$scope.result,
-            paperCode:$scope.questionPaperCode
+            paperCode:$scope.id,
         }
 
             apiService.post('/api/storeQuestion',data);
+    }
+
+    $scope.saveAndAddQuestionCode = function () {
+        var data={
+            question:$scope.question,
+            a:$scope.optionA,
+            b:$scope.optionB,
+            c:$scope.optionC,
+            d:$scope.optionD,
+            result:$scope.result,
+            paperCode:$scope.id,
+        }
+
+        apiService.post('/api/storeQuestion',data);
+
+        $scope.question = "";
+        $scope.optionA = "";
+        $scope.optionB = "";
+        $scope.optionC = "";
+        $scope.optionD= "";
+        $scope.result = "";
+
     }
 
 });

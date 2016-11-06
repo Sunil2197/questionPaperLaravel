@@ -19,3 +19,4 @@ Route::get('/user', function (Request $request) {
 
 Route::post('storePaperCode','IndexController@storeQuestionPaperCode');
 Route::post('storeQuestion','IndexController@storeQuestionCode');
+Route::get('getPaper/{paperCode}','IndexController@getPaper');
